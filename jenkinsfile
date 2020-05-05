@@ -49,6 +49,7 @@ pipeline {
             }
             steps {
                 dir(path: env.BUILD_ID) { 
+                    sh 'pwd'
                     sh 'ls -la'
                     sh 'pyinstaller -n play-blackjack --onefile run.py src/*.py'
                 }
