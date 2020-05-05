@@ -49,13 +49,13 @@ pipeline {
             }
             steps {
                 dir(path: env.BUILD_ID) { 
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -n play-blackjack --onefile run.py src/*.py'" 
+                    sh 'ls -la'
+                    sh 'pyinstaller -n play-blackjack --onefile run.py src/*.py'
                 }
             }
             post {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/dist/play-blackjack" 
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
         }
