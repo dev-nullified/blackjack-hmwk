@@ -52,7 +52,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts "dist/play-blackjack" 
+                    archiveArtifacts "dist/*" 
                 }
             }
         }
