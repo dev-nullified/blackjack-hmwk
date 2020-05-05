@@ -44,13 +44,15 @@ pipeline {
         stage('Deliver') {
             agent any
             steps {
+                directory("${WORKSPACE}") {
                     sh 'pwd'
                     sh 'ls -la'
-                    sh 'pyinstaller -n play-blackjack --onefile "$WORKSPACE/run.py" "$WORKSPACE/src/*.py"'
+                    sh 'pyinstaller -n play-blackjack --onefile run.py src/*.py'
+                }
             }
             post {
                 success {
-                    archiveArtifacts "${env.BUILD_ID}/dist/play-blackjack" 
+                    archiveArtifacts "${WORKSPACE}/dist/play-blackjack" 
                 }
             }
         }
