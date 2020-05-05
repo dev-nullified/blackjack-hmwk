@@ -46,7 +46,7 @@ pipeline {
             steps {
                     sh 'pwd'
                     sh 'ls -la'
-                    sh 'pyinstaller -n play-blackjack --onefile $WORKSPACE/run.py $WORKSPACE/src/*.py'
+                    sh 'pyinstaller -n play-blackjack --onefile "$WORKSPACE/run.py" "$WORKSPACE/src/*.py"'
             }
             post {
                 success {
