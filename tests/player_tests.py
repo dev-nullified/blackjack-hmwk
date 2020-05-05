@@ -3,7 +3,7 @@ import sys
 import io
 import unittest.mock
 
-sys.path.append('../')
+# sys.path.append('../')
 
 
 class TestPlayerInit(unittest.TestCase):

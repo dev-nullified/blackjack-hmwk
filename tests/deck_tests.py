@@ -2,7 +2,7 @@ import unittest
 
 import sys
 
-sys.path.append('../')
+# sys.path.append('../')
 
 class TestDeckInit(unittest.TestCase):
 

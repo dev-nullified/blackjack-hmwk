@@ -11,36 +11,19 @@ pipeline {
                 sh 'python -m py_compile run.py src/*.py'
             }
         }
-        // stage('Test') {
-        //     agent {
-        //         docker {
-        //             image 'qnib/pytest'
-        //         }
-        //     }
-        //     steps {
-        //         sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
-        //     }
-        //     post {
-        //         always {
-        //             junit 'test-reports/results.xml'
-        //         }
-        //     }
-        // }
-        // stage('Deliver') {
-        //     agent {
-        //         docker {
-        //             image 'cdrx/pyinstaller-linux:python3'
-        //         }
-        //     }
-        //     steps {
-        //         sh 'pyinstaller -n play-blackjack --onefile run.py src/*.py'
-        //     }
-        //     post {
-        //         success {
-        //             archiveArtifacts 'dist/play-blackjack'
-        //         }
-        //     }
-        // }
+        stage('Test') {
+            agent any
+            steps {
+                dir("${WORKSPACE}") {
+                    sh 'pytest --verbose --junit-xml test-reports/results.xml tests/*.py'
+                }
+            }
+            post {
+                always {
+                    junit 'test-reports/results.xml'
+                }
+            }
+        }
         stage('Deliver') {
             agent any
             steps {
