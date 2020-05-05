@@ -35,7 +35,7 @@ pipeline {
             }
             post {
                 success {
-                    sh "cp dist/* /root/final-proj/"
+                    sh "cp dist/* /opt/final_proj/"
                     archiveArtifacts "dist/*" 
                 }
             }
