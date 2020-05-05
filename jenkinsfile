@@ -49,7 +49,6 @@ pipeline {
             }
             steps {
                 dir(path: env.BUILD_ID) { 
-                    unstash(name: 'compiled-results') 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -n play-blackjack --onefile run.py src/*.py'" 
                 }
             }
